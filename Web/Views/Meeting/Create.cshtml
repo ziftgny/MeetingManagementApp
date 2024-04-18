@@ -1,0 +1,45 @@
+﻿@model Meeting
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Meeting</h2>
+            <hr/>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Name" class="p-0">Meeting Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="StartTime" class="p-0">Starting time</label>
+            <input asp-for="StartTime" class="form-control" />
+            <span asp-validation-for="StartTime" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="EndTime" class="p-0">Ending time</label>
+            <input asp-for="EndTime" class="form-control" />
+            <span asp-validation-for="EndTime" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Description" class="p-0">Description</label>
+            <input asp-for="Description" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="DocumentURL" class="p-0">Document URL</label>
+            <input asp-for="DocumentURL" class="form-control" />
+        </div>
+
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control" >Create</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Meeting" asp-action="Index" class="btn btn-secondary border  form-control">
+                    Back to List
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+</form>

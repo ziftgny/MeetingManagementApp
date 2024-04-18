@@ -1,1 +1,53 @@
-﻿<h1>Meeting List</h1>
+﻿@model List<Meeting>
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">Meeting List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Meeting" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create New Meeting
+            </a>
+        </div>
+    </div>
+    
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    StartTime
+                </th>
+                <th>
+                    EndTime
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    FileURL
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var obj in Model)
+            {
+                <tr>
+                    <td>@obj.Id</td>
+                    <td>@obj.Name</td>
+                    <td>@obj.StartTime</td>
+                    <td>@obj.EndTime</td>
+                    <td>@obj.Description</td>
+                    <td>@obj.DocumentURL</td>
+                </tr>
+            
+            }
+        </tbody>
+    </table>
+</div>
