@@ -1,9 +1,10 @@
 ﻿@model Meeting
 <form method="post">
+    @*<input asp-for="Id" hidden\>*@
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary">Create Meeting</h2>
-            <hr/>
+            <h2 class="text-primary">Edit Meeting</h2>
+            <hr />
         </div>
         <div class="mb-3 row p-1">
             <label asp-for="Name" class="p-0">Meeting Name</label>
@@ -31,7 +32,7 @@
 
         <div class="row">
             <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-primary form-control" >Create</button>
+                <button type="submit" class="btn btn-primary form-control">Update</button>
             </div>
             <div class="col-6 col-md-3">
                 <a asp-controller="Meeting" asp-action="Index" class="btn btn-secondary border  form-control">
@@ -43,7 +44,7 @@
 
     </div>
 </form>
-@section Scripts{
+@section Scripts {
     @{
         <partial name="_ValidationScriptsPartial" />
     }
