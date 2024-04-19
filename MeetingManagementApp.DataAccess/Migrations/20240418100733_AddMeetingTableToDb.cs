@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Web.Migrations
+namespace MeetingManagementApp.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddMeetingTableToDb : Migration

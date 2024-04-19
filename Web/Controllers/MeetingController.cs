@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Web.Data;
-using Web.Models;
+using MeetingManagementApp.DataAccess.Data;
+using MeetingManagementApp.Models;
 
 namespace Web.Controllers
 {
@@ -23,6 +23,14 @@ namespace Web.Controllers
         [HttpPost]
         public IActionResult Create(Meeting obj)
         {
+            if (DateTime.Compare(DateTime.Now, obj.EndTime) > 0)
+            {
+                ModelState.AddModelError("EndTime", "Please enter a valid date");
+            }
+            if (DateTime.Compare(DateTime.Now, obj.StartTime) > 0)
+            {
+                ModelState.AddModelError("StartTime", "Please enter a valid date");
+            }
             if (DateTime.Compare(obj.StartTime, obj.EndTime) >= 0)
             {
                 ModelState.AddModelError("EndTime", "Ending Time cant be earlier than Starting Time");
@@ -52,6 +60,14 @@ namespace Web.Controllers
         [HttpPost]
         public IActionResult Edit(Meeting obj)
         {
+            if(DateTime.Compare(DateTime.Now, obj.EndTime) > 0)
+            {
+                ModelState.AddModelError("EndTime", "Please enter a valid date");
+            }
+            if (DateTime.Compare(DateTime.Now, obj.StartTime) > 0)
+            {
+                ModelState.AddModelError("StartTime", "Please enter a valid date");
+            }
             if (DateTime.Compare(obj.StartTime, obj.EndTime) >= 0)
             {
                 ModelState.AddModelError("EndTime", "Ending Time cant be earlier than Starting Time");

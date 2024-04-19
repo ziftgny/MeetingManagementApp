@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{3222762B-479D-4509-8F8D-24E8606578EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{3222762B-479D-4509-8F8D-24E8606578EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetingManagementApp.DataAccess", "MeetingManagementApp.DataAccess\MeetingManagementApp.DataAccess.csproj", "{FEEFF529-D693-438A-ABAA-6E052EEDFF55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetingManagementApp.Models", "MeetingManagementApp.Models\MeetingManagementApp.Models.csproj", "{8E276AC7-277E-4BC4-A45B-6108EB3964DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetingManagementApp.Utility", "MeetingManagementApp.Utility\MeetingManagementApp.Utility.csproj", "{84EC7F79-6E52-4BB7-8DE4-C1A3E7DBEACA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{3222762B-479D-4509-8F8D-24E8606578EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3222762B-479D-4509-8F8D-24E8606578EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3222762B-479D-4509-8F8D-24E8606578EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEEFF529-D693-438A-ABAA-6E052EEDFF55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEEFF529-D693-438A-ABAA-6E052EEDFF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEEFF529-D693-438A-ABAA-6E052EEDFF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEEFF529-D693-438A-ABAA-6E052EEDFF55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E276AC7-277E-4BC4-A45B-6108EB3964DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E276AC7-277E-4BC4-A45B-6108EB3964DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E276AC7-277E-4BC4-A45B-6108EB3964DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E276AC7-277E-4BC4-A45B-6108EB3964DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84EC7F79-6E52-4BB7-8DE4-C1A3E7DBEACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84EC7F79-6E52-4BB7-8DE4-C1A3E7DBEACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84EC7F79-6E52-4BB7-8DE4-C1A3E7DBEACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84EC7F79-6E52-4BB7-8DE4-C1A3E7DBEACA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

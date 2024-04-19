@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace Web.Migrations
+namespace MeetingManagementApp.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class seedData : Migration

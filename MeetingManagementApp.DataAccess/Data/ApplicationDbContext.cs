@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Web.Models;
-
-namespace Web.Data
+using MeetingManagementApp.Models;
+namespace MeetingManagementApp.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {

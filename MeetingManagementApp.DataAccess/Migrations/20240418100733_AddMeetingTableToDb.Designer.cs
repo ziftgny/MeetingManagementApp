@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Web.Data;
+using MeetingManagementApp.DataAccess.Data;
 
 #nullable disable
 
-namespace Web.Migrations
+namespace MeetingManagementApp.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240418142840_seedData")]
-    partial class seedData
+    [Migration("20240418100733_AddMeetingTableToDb")]
+    partial class AddMeetingTableToDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,35 +54,6 @@ namespace Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Meetings");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "deneme",
-                            DocumentURL = "deneme",
-                            EndTime = new DateTime(2024, 4, 18, 17, 28, 39, 529, DateTimeKind.Local).AddTicks(1876),
-                            Name = "pazar toplantısı",
-                            StartTime = new DateTime(2024, 4, 18, 17, 28, 39, 529, DateTimeKind.Local).AddTicks(1894)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "deneme",
-                            DocumentURL = "deneme",
-                            EndTime = new DateTime(2024, 4, 18, 17, 28, 39, 529, DateTimeKind.Local).AddTicks(1897),
-                            Name = "sali toplantısı",
-                            StartTime = new DateTime(2024, 4, 18, 17, 28, 39, 529, DateTimeKind.Local).AddTicks(1898)
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "deneme",
-                            DocumentURL = "deneme",
-                            EndTime = new DateTime(2024, 4, 18, 17, 28, 39, 529, DateTimeKind.Local).AddTicks(1901),
-                            Name = "toplanmantısı",
-                            StartTime = new DateTime(2024, 4, 18, 17, 28, 39, 529, DateTimeKind.Local).AddTicks(1902)
-                        });
                 });
 #pragma warning restore 612, 618
         }
