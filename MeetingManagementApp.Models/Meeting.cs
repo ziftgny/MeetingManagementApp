@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace MeetingManagementApp.Models
 {
@@ -13,6 +14,7 @@ namespace MeetingManagementApp.Models
         [Required]
         public DateTime EndTime { get; set; }
         public string Description { get; set; }
+        [ValidateNever]
         public string DocumentURL { get; set; }
     }
 }

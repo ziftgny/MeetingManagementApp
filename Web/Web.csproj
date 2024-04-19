@@ -21,4 +21,8 @@
     <ProjectReference Include="..\MeetingManagementApp.Utility\MeetingManagementApp.Utility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Documents\Meeting\" />
+  </ItemGroup>
+
 </Project>

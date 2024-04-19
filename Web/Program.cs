@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MeetingManagementApp.DataAccess.Data;
+using MeetingManagementApp.DataAccess.Repository.IRepository;
+using MeetingManagementApp.DataAccess.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options=>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+builder.Services.AddScoped<IMeetingRepository, MeetingRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

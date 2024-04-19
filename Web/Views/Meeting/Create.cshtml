@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="card-body p-4">
-        <form method="post" class="row">
+        <form method="post" class="row" enctype="multipart/form-data">
             <div class="border p-3">
                 <div class="mb-3 row p-1">
                     <label asp-for="Name" class="p-0">Meeting Name</label>
@@ -32,7 +32,8 @@
                 </div>
                 <div class="mb-3 row p-1">
                     <label asp-for="DocumentURL" class="p-0">Document URL</label>
-                    <input asp-for="DocumentURL" class="form-control" />
+                    <input type="file" name="file" class="form-control" enctype="multipart/form-data" />
+                    <span asp-validation-for="DocumentURL" class="text-danger"></span>
                 </div>
 
                 <div class="row">

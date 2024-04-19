@@ -1,19 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MeetingManagementApp.DataAccess.Data;
 using MeetingManagementApp.Models;
+using MeetingManagementApp.DataAccess.Repository.IRepository;
 
 namespace Web.Controllers
 {
     public class MeetingController : Controller
     {
-        ApplicationDbContext _db;
-        public MeetingController(ApplicationDbContext db)
+        IMeetingRepository _meetingRepository;
+        IWebHostEnvironment _webHostEnvironment;
+        public MeetingController(IMeetingRepository db, IWebHostEnvironment webHostEnvironment)
         {
-            _db = db;
+            _meetingRepository = db;
+            _webHostEnvironment = webHostEnvironment;
+
         }
         public IActionResult Index()
         {
-            List<Meeting> meetingList = _db.Meetings.ToList();
+            List<Meeting> meetingList = _meetingRepository.GetAll().ToList();
             return View(meetingList);
         }
         public IActionResult Create()
@@ -21,7 +25,7 @@ namespace Web.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Meeting obj)
+        public IActionResult Create(Meeting obj,IFormFile? file)
         {
             if (DateTime.Compare(DateTime.Now, obj.EndTime) > 0)
             {
@@ -37,8 +41,26 @@ namespace Web.Controllers
             }
             if (ModelState.IsValid)
             {
-                _db.Meetings.Add(obj);
-                _db.SaveChanges();
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if (file != null)
+                {
+                    string filename= Guid.NewGuid().ToString()+Path.GetExtension(file.FileName);
+                    string productpath = Path.Combine(wwwRootPath, @"Documents\Meeting");
+
+                 
+
+
+                    using (var fileStream = new FileStream(Path.Combine(productpath, filename), FileMode.Create))
+                    {
+                        file.CopyTo(fileStream);
+                    }
+
+                    obj.DocumentURL = @"\Documents\Meeting" + filename;
+                }
+               
+    
+                _meetingRepository.Add(obj);
+                _meetingRepository.Save();
                 TempData["success"] = "Meeting created successfully";
                 return RedirectToAction("Index");
             }
@@ -50,7 +72,7 @@ namespace Web.Controllers
             {
                 return NotFound();
             }
-            Meeting? meeting = _db.Meetings.FirstOrDefault(u=>u.Id==id);
+            Meeting? meeting = _meetingRepository.Get(u=>u.Id==id);
             if(meeting == null)
             {
                 return NotFound();
@@ -58,7 +80,7 @@ namespace Web.Controllers
             return View(meeting);
         }
         [HttpPost]
-        public IActionResult Edit(Meeting obj)
+        public IActionResult Edit(Meeting obj, IFormFile? file)
         {
             if(DateTime.Compare(DateTime.Now, obj.EndTime) > 0)
             {
@@ -74,8 +96,29 @@ namespace Web.Controllers
             }
             if (ModelState.IsValid)
             {
-                _db.Meetings.Update(obj);
-                _db.SaveChanges();
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if (file != null)
+                {
+                    string filename = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    string productpath = Path.Combine(wwwRootPath, @"Documents\Meeting");
+
+                    var oldImagePath = Path.Combine(wwwRootPath, obj.DocumentURL.TrimStart('\\'));
+                   
+                    System.IO.File.Delete(oldImagePath);
+                    
+
+
+                    using (var fileStream = new FileStream(Path.Combine(productpath, filename), FileMode.Create))
+                    {
+                        file.CopyTo(fileStream);
+                    }
+
+                    obj.DocumentURL = @"\Documents\Meeting" + filename;
+                }
+
+
+                _meetingRepository.Update(obj);
+                _meetingRepository.Save();
                 TempData["success"] = "Meeting updated successfully";
                 return RedirectToAction("Index");
             }
@@ -87,7 +130,7 @@ namespace Web.Controllers
             {
                 return NotFound();
             }
-            Meeting? meeting = _db.Meetings.FirstOrDefault(u => u.Id == id);
+            Meeting? meeting = _meetingRepository.Get(u => u.Id == id);
             if (meeting == null)
             {
                 return NotFound();
@@ -97,13 +140,13 @@ namespace Web.Controllers
         [HttpPost,ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            Meeting? meeting = _db.Meetings.FirstOrDefault(u => u.Id == id);
+            Meeting? meeting = _meetingRepository.Get(u => u.Id == id);
             if (meeting == null)
             {
                 return NotFound();
             }
-            _db.Meetings.Remove(meeting);
-            _db.SaveChanges();
+            _meetingRepository.Remove(meeting);
+            _meetingRepository.Save();
             TempData["success"] = "Meeting deleted successfully";
             return RedirectToAction("Index");
         }
